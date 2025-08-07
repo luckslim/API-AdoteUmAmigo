@@ -6,10 +6,32 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+enum Role {
+  ADMIN
+  MEMBER
+}
+enum Status {
+  AVAILABLE
+  UNAVAILABLE
+}
 model User {
   id String @id @default(uuid())
   name String
   email String @unique
+  role  Role @default(MEMBER)
   password_hash String?
   @@map("users")
+  Animal Animal[]
+}
+model Animal {
+  id String @id @default(uuid())
+  name String
+  species String
+  age Int
+  location String
+  status Status @default(AVAILABLE)
+  user User  @relation(fields: [userid], references: [id])
+  userid String
+  created_at DateTime @default(now())
+  validated_at DateTime?
 }
