@@ -30,8 +30,9 @@ model Animal {
   age Int
   location String
   status Status @default(AVAILABLE)
-  user User  @relation(fields: [userid], references: [id])
-  userid String
+  user User  @relation(fields: [user_id], references: [id])
+  user_id String
   created_at DateTime @default(now())
   validated_at DateTime?
+  @@map("animal")
 }
