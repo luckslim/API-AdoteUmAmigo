@@ -1,6 +1,5 @@
 import { AnimalRepository } from "@/repositories/animal-repository"
-import { Animal, Prisma } from "@prisma/client"
-
+import { Animal} from "@prisma/client"
 interface CreateAnimalUseCaseRequest {
     name: string;
     species: string;
@@ -21,6 +20,11 @@ export class CreateAnimalUseCase {
         location
     }: CreateAnimalUseCaseRequest): Promise<CreateAnimalUseCaseResponse> {
         const animal = await this.animalRepository.create({
+            name,
+            age,
+            location,
+            species,
+            user_id: userId,
         })
         return {
             animal

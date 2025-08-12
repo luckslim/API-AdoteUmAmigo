@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
 import { create } from "./create";
-export async function usersRoutes(app: FastifyInstance){
+export async function animalRoutes(app: FastifyInstance){
     app.post('/animal', create)
 }
