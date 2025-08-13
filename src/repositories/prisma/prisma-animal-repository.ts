@@ -3,6 +3,14 @@ import { AnimalRepository } from "../animal-repository";
 import { prisma } from "@/lib/prisma";
 
 export class PrismaAnimalRepository implements AnimalRepository {
+    async findAll(){
+        const animalAll = await prisma.animal.findMany(
+            {
+                orderBy:{created_at:'desc'}
+            }
+        )
+        return animalAll
+    }
     async DeleteById(id: string) {
         const animal = await prisma.animal.delete({
             where: {

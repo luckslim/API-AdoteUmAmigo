@@ -7,7 +7,7 @@ interface DeleteAnimalUseCaseRequest {
 interface DeleteAnimalUseCaseResponse{
     idDelete: Animal
 }
-export class DeleteAnimal {
+export class DeleteAnimalUseCase {
     constructor(private animalRepository: AnimalRepository ){}
     async execute({
         idRequest
