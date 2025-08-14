@@ -4,7 +4,7 @@ import { Animal } from "@prisma/client";
 interface GetAnimalAllResponse{
     animal : Animal[]
 }
-export class getAnimalAllUseCase{
+export class GetAnimalAllUseCase{
     constructor(private animalRepository:AnimalRepository){}
     async execute():Promise<GetAnimalAllResponse>{
         const animal = await this.animalRepository.findAll()
