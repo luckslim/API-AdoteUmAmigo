@@ -3,6 +3,14 @@ import { AnimalRepository } from "../animal-repository";
 import { prisma } from "@/lib/prisma";
 
 export class PrismaAnimalRepository implements AnimalRepository {
+    async findById(id: string){
+        const animal = await prisma.animal.findMany({
+            where:{
+                user_id: id,
+            }
+        })
+        return animal
+    }
     async findAll(){
         const animalAll = await prisma.animal.findMany(
             {
